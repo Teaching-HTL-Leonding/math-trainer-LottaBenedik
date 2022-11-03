@@ -1,0 +1,65 @@
+<h1>Settings</h1>
+
+<form #f = "ngForm">
+  <div>
+    <label>Number of digits allowed:
+      <select name="numberOfDigitsAllowed" id="numberOfDigitsAllowed"
+
+      [(ngModel)]="settings.numberOfDigits">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+      </select>
+    </label>
+  </div>
+  <div>
+    <label>Number of questions asked:
+      <select name="numberOfQuestionsAsk" id="numberOfQuestionsAsk"
+      [(ngModel)]="settings.numberOfQuestions">
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+        <option>14</option>
+        <option>15</option>
+        <option>16</option>
+        <option>17</option>
+        <option>18</option>
+        <option>19</option>
+        <option>20</option>
+      </select>
+    </label>
+  </div>
+  <div>
+    <label>
+      <input type="checkbox" id="isActive" name="isActive"
+      [(ngModel)]="settings.substractionSelected">Substraction (-)
+    </label>
+    <label>
+      <input type="checkbox" id="isActive" name="isActive"
+      [(ngModel)]="settings.additionSelected">Addition (+)
+    </label>
+    <label>
+      <input type="checkbox" id="isActive" name="isActive"
+      [(ngModel)]="settings.multiplicationSelected">Multiplication (*)
+    </label>
+    <label>
+      <input type="checkbox" id="isActive" name="isActive"
+      [(ngModel)]="settings.divisionSelected">Division (/)
+    </label>
+  </div>
+
+  <p [hidden]="atLeastOneOperator()">
+    You have to select at least one operator!
+  </p>
+
+</form>
+
+<button type="button" [disabled]="!atLeastOneOperator()" routerLink="/exercise"> Start Exercising!</button>
+

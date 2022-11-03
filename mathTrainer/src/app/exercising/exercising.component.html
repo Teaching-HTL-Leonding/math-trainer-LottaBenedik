@@ -1,0 +1,23 @@
+<h1>Exercise</h1>
+<button type="button" routerLink="/settings">Settings</button>
+<button type="button" (click)="restart()" >New Exercise</button>
+
+<form #f="ngForm">
+
+  <table>
+    <tr>
+      <th>Question</th>
+      <th>Your answer</th>
+      <th>Correct answer</th>
+    </tr>
+    <tr *ngFor="let question of questions">
+      <td>{{question.firstNumber}}{{question.operator}}{{question.secondNumber}}=?</td>
+      <td>
+        <input type="number" name="answer" id="answer" [(ngModel)]="question.userAnswer" required>
+      </td>
+      <td [hidden]="!seeAnswers" [style] = "'color: '+(question.answer === question.userAnswer?'green':'red')">{{question.answer}}</td>
+  </table>
+</form>
+
+<button type="button" [disabled]="!f.form.valid" (click)="checkAnswers()">Done</button>
+
